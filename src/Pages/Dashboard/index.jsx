@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { NavMenu } from './componentsPage/NavMenu';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import {EstadisticasUsuarios} from './componentsPage/estadisticasUsuarios';
-import {TablaEntrenadores} from './componentsPage/pruebaDataTable';
+import {DataTable} from './componentsPage/DataTable';
+import { TrabajadorDes } from "./componentsPage/Trabajador destacado";
 
 function Dasboard() {
   const location = useLocation();
@@ -50,14 +50,15 @@ function Dasboard() {
       <Header />
       <div className="flex-grow p-4">
         {/* Contenido principal, como el componente NavMenu */}
-        <NavMenu />
+        {/* <NavMenu /> */}
         <div className="flex flex-col gap-4">
           <EstadisticasUsuarios />
           <div className="flex flex-row gap-4">
             {/* Agrega el contenido adicional aquí */}
           </div>
           <div className="flex flex-row gap-4">
-            <TablaEntrenadores />
+            <DataTable />
+            <TrabajadorDes />
           </div>
         </div>
       </div>

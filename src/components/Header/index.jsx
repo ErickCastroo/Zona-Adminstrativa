@@ -9,38 +9,38 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import logo from "@/assets/images/logo&slogan.png";
+import { NavMenu } from "@/Pages/Dashboard/componentsPage/NavMenu";
+import { Switch } from "@/Pages/Dashboard/componentsPage/swichPageColor";
 
 const Header = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
-    
   };
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
-    
   };
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    
+
     // Agrega la lógica para manejar los datos del formulario (correo y contraseña)
     // Puedes enviar los datos al servidor o realizar otras acciones según tus necesidades.
   };
 
   return (
-    <div className="flex justify-between items-center p-4 bg-gray-800 text-white">
+    <div className="flex justify-between items-center p-1 bg-slate-800    dark:bg-slate-900  dark: text-slate-900">
       {/* Logo a la izquierda */}
       <div className="w-1/12">
         <img src={logo} alt="Logo" className="w-full h-auto" />
       </div>
-
+      <NavMenu />
       {/* Ícono de perfil a la derecha */}
       <Dialog>
+        <Switch />
         <DialogTrigger>
           <Avatar className="w-12 h-12 lg:w-10 lg:h-10 xl:w-20 xl:h-20">
             <AvatarImage
@@ -50,7 +50,6 @@ const Header = () => {
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
         </DialogTrigger>
-
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Edita tu perfil</DialogTitle>
@@ -69,7 +68,7 @@ const Header = () => {
                 name="email"
                 value={email}
                 onChange={handleEmailChange}
-                className="border border-gray-400 p-2 rounded-md flex-grow"
+                className="border border-gray-400 p-2 rounded-md flex-grow dark:text-slate-200 dark:bg-slate-800  dark:placeholder-slate-900"
               />
             </div>
             <div className="flex mb-2">
@@ -79,7 +78,7 @@ const Header = () => {
                 name="password"
                 value={password}
                 onChange={handlePasswordChange}
-                className="border border-gray-400 p-2 rounded-md flex-grow"
+                className="border  dark:text-slate-200 dark:bg-slate-800  dark:placeholder-slate-900 border-gray-400 p-2 rounded-md flex-grow"
               />
             </div>
             <button

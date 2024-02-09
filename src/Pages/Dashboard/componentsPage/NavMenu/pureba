@@ -1,0 +1,59 @@
+// import React from "react";
+// import { GiHamburgerMenu } from "react-icons/gi";
+// import logoChat from "@/assets/images/logoChat.png";
+// import { NavLink as ReactRouterNavLink } from "react-router-dom";
+// import { IoHome, IoSettingsSharp, IoLogInSharp } from "react-icons/io5";
+// import {
+//   Sheet,
+//   SheetContent,
+//   SheetDescription,
+//   SheetHeader,
+//   SheetTitle,
+//   SheetTrigger,
+// } from "@/components/ui/sheet";
+
+// const NavMenu = () => {
+//   return (
+//     <div>
+//       <Sheet>
+//         <SheetTrigger className="fixed bottom-16 right-8 lg:right-12 xl:right-5 bg-blue-500 text-white p-4 lg:p-5 rounded-full cursor-pointer transition duration-300 hover:bg-blue-700">
+//           <GiHamburgerMenu className="text-2xl lg:text-3xl xl:text-4xl" />
+//         </SheetTrigger>
+//         <SheetContent>
+//           <SheetHeader>
+//             <SheetTitle className="text-2xl font-bold mb-4">
+//               Bienvenido a la administración del chatbot
+//             </SheetTitle>
+//             <SheetDescription className="flex items-center justify-center mt-4">
+//               <img
+//                 className="rounded-full w-12 h-12 object-cover"
+//                 src={logoChat}
+//                 alt="Logo del chat"
+//               />
+//             </SheetDescription>
+//           </SheetHeader>
+//           <nav className="flex flex-col gap-4 p-4">
+//             <CustomNavLink to="/" icon={<IoHome />} label="Home" />
+//             <CustomNavLink to="/Entrenamiento" icon={<IoSettingsSharp />} label="Zona de entrenamiento" />
+//             <CustomNavLink to="/Entrenamiento" icon={<IoSettingsSharp />} label="Zona de entrenamiento" />
+//             <CustomNavLink to="/Entrenamiento" icon={<IoSettingsSharp />} label="Zona de entrenamiento" />
+//             <CustomNavLink to="/Entrenamiento" icon={<IoSettingsSharp />} label="Zona de entrenamiento" />
+//             <CustomNavLink to="/" label="Otra página" />
+//             <CustomNavLink to="/login" icon={<IoLogInSharp />} label="Cerrar sesión" />
+//           </nav>
+//         </SheetContent>
+//       </Sheet>
+//     </div>
+//   );
+// };
+
+// const CustomNavLink = ({ to, icon, label }) => {
+//   return (
+//     <ReactRouterNavLink to={to} className="nav-link">
+//       <div className="flex items-center text-blue-500 hover:underline text-lg bg-blue-100 bg-opacity-30 rounded-md p-2">
+//         {icon && <div className="mr-3">{icon}</div>}
+//         {label}
+//       </div>
+//     </ReactRouterNavLink>
+//   );
+// };

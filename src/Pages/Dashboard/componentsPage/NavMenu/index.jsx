@@ -1,61 +1,148 @@
+// Importar React desde la biblioteca React
 import React from "react";
-import { GiHamburgerMenu } from "react-icons/gi";
-import logoChat from "@/assets/images/logoChat.png";
-import { NavLink as ReactRouterNavLink } from "react-router-dom";
-import { IoHome, IoSettingsSharp, IoLogInSharp } from "react-icons/io5";
+// Importar la función cn desde el archivo "@/lib/utils"
+import { cn } from "@/lib/utils";
+// Importar componentes del archivo "@/components/ui/navigation-menu"
 import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
 
-const NavMenu = () => {
+  const rutas = [ 
+    {
+      nombre: 'Usuarios',
+    },
+    {
+      nombre: 'Intenciones',
+    },
+    {
+      nombre: 'Respuestas',
+    },
+    {
+      nombre: 'Historias',
+    },
+    {
+      nombre: 'Pasos',
+    },
+    {
+      nombre: 'Entretenimiento',
+    },
+    {
+      nombre: 'Reglas',
+    },
+    {
+      nombre: 'Pasos Reglas ',
+    },
+  ]
+  
+  // Array de objetos que representan los componentes con sus detalles
+  const component = ({nombre}) => { 
+    return [
+      {
+        title:`Crear ${nombre}`,
+        href: "/docs/primitives/alert-dialog",
+        description:`Crear una nueva ${nombre}`,
+      },
+      {
+        title:`Borrar ${nombre}`,
+        href: "/docs/primitives/hover-card",
+        description:`Borrar una ${nombre}`,
+      },
+      {
+        title:`Editar ${nombre}`,
+        href: "/docs/primitives/progress",
+        description:`Editar una ${nombre}`,
+      },
+      {
+        title:`Ver ${nombre}`,
+        href: "/docs/primitives/scroll-area",
+        description: `Ver una ${nombre}`,
+      },
+    ];
+  }
+
+
+// Función principal que representa el menú de navegación
+function NavMenu() {
   return (
-    <div>
-      <Sheet>
-        <SheetTrigger className="fixed bottom-16 right-8 lg:right-12 xl:right-5 bg-blue-500 text-white p-4 lg:p-5 rounded-full cursor-pointer transition duration-300 hover:bg-blue-700">
-          <GiHamburgerMenu className="text-2xl lg:text-3xl xl:text-4xl" />
-        </SheetTrigger>
-        <SheetContent>
-          <SheetHeader>
-            <SheetTitle className="text-2xl font-bold mb-4">
-              Bienvenido a la administración del chatbot
-            </SheetTitle>
-            <SheetDescription className="flex items-center justify-center mt-4">
-              <img
-                className="rounded-full w-12 h-12 object-cover"
-                src={logoChat}
-                alt="Logo del chat"
-              />
-            </SheetDescription>
-          </SheetHeader>
-          <nav className="flex flex-col gap-4 p-4">
-            <CustomNavLink to="/" icon={<IoHome />} label="Home" />
-            <CustomNavLink to="/Entrenamiento" icon={<IoSettingsSharp />} label="Zona de entrenamiento" />
-            <CustomNavLink to="/Entrenamiento" icon={<IoSettingsSharp />} label="Zona de entrenamiento" />
-            <CustomNavLink to="/Entrenamiento" icon={<IoSettingsSharp />} label="Zona de entrenamiento" />
-            <CustomNavLink to="/Entrenamiento" icon={<IoSettingsSharp />} label="Zona de entrenamiento" />
-            <CustomNavLink to="/" label="Otra página" />
-            <CustomNavLink to="/login" icon={<IoLogInSharp />} label="Cerrar sesión" />
-          </nav>
-        </SheetContent>
-      </Sheet>
-    </div>
+    <NavigationMenu>
+      <NavigationMenuList>
+        {rutas?.map((ruta) => (
+          <NavigationMenuItem key={ruta.nombre} className="text-slate-800 dark:text-slate-200">
+            <NavigationMenuTrigger>{ruta.nombre}</NavigationMenuTrigger>
+            {/* Contenido del primer elemento del menú */}
+            <NavigationMenuContent>
+              <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                {/* Primer elemento de contenido */}
+                <li className="row-span-3">
+                  <NavigationMenuLink asChild>
+                    {/* Enlace y contenido del primer elemento */}
+                    <a
+                      className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md dark:text-slate-200"
+                      href="/"
+                    >
+                      <div className="mb-2 mt-4 text-lg font-medium">{ruta.nombre}</div>
+                      <p className="text-sm leading-tight text-muted-foreground">
+                        {`Opciones de ${ruta.nombre}`}
+                      </p>
+                    </a>
+                  </NavigationMenuLink>
+                </li>
+                {component({nombre: ruta.nombre}).map((component) => (
+                  <ListItem
+                    key={component.title}
+                    title={component.title}
+                    href={component.href}
+                  >
+                    {component.description}
+                  </ListItem>
+                ))}
+              </ul>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+        ))}
+      </NavigationMenuList>
+    </NavigationMenu>
+    
   );
-};
+}
 
-const CustomNavLink = ({ to, icon, label }) => {
-  return (
-    <ReactRouterNavLink to={to} className="nav-link">
-      <div className="flex items-center text-blue-500 hover:underline text-lg bg-blue-100 bg-opacity-30 rounded-md p-2">
-        {icon && <div className="mr-3">{icon}</div>}
-        {label}
-      </div>
-    </ReactRouterNavLink>
-  );
-};
+// Componente funcional ListItem, utilizado dentro de NavMenu
+const ListItem = React.forwardRef(
+  // Recibe propiedades y una referencia como argumentos
+  ({ className, title, children, ...props }, ref) => {
+    return (
+      // Elemento de lista
+      <li>
+        {/* Enlace dentro de NavigationMenuLink */}
+        <NavigationMenuLink asChild>
+          <a
+            // Aplicar clases de estilo dinámicamente usando cn
+            className={cn(
+              "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+              className
+            )}
+            // Propiedades adicionales se aplican usando {...props}
+            {...props}
+          >
+            {/* Contenido del ListItem */}
+            <div className="text-sm font-medium leading-none">{title}</div>
+            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+              {children}
+            </p>
+          </a>
+        </NavigationMenuLink>
+      </li>
+    );
+  }
+);
 
+// Establecer un nombre para el componente ListItem
+ListItem.displayName = "ListItem";
+
+// Exportar el componente NavMenu y ListItem
 export { NavMenu };

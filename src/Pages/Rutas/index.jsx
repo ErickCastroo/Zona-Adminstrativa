@@ -4,10 +4,8 @@ import {useRoutes, BrowserRouter} from 'react-router-dom'
 //importar las paginas
 import { Dasboard } from '../Dashboard'
 import { Login } from '../Login'
-import { Entrenamiento } from '../Entrenamiento'
 
 //importar los componentes
-
 
 
 function Rutas() {
@@ -24,12 +22,6 @@ function Rutas() {
         path: '/login',
         
         element:<Login/>
-      },
-
-      {
-        path: '/entrenamiento',
-        
-        element:<Entrenamiento/>
       },
 
     ])
