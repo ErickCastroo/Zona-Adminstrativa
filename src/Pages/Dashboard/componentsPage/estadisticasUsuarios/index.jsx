@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState, useEffect} from 'react';
 import { FaRobot } from "react-icons/fa";
 import { RiAdminLine } from "react-icons/ri";
 import { GrUserAdmin } from "react-icons/gr";
@@ -6,10 +6,25 @@ import { GrUserAdmin } from "react-icons/gr";
 
 
 function EstadisticasUsuarios() {
+
+const [Admins, setAdmins] = useState('')
+const [entrenadores, setEntrenadores] = useState('')
+
+
+useEffect(() => {
+  getRoles()
+}, [])
+
+const getRoles = async () => {
+  setAdmins('52')
+  setEntrenadores('13')
+}
+
+
   return (
     <div className="flex flex-col md:flex-row gap-4">
-      <BoxWrapper iconColor="bg-sky-500" icon={<RiAdminLine className="text-2xl text-white" />} title="Total de admin" value="1" change="" />
-      <BoxWrapper iconColor="bg-orange-600" icon={<GrUserAdmin className="text-2xl text-white" />} title="Total entrenadores" value="1" change="" />
+      <BoxWrapper iconColor="bg-sky-500" icon={<RiAdminLine className="text-2xl text-white" />} title="Total de admin" value={Admins} change="" />
+      <BoxWrapper iconColor="bg-orange-600" icon={<GrUserAdmin className="text-2xl text-white" />} title="Total entrenadores" value={entrenadores} change="" />
       <BoxWrapper iconColor="bg-green-600" icon={<FaRobot className="text-2xl text-white" />} title="estado del Chat-Bot" value="entrenando" change="" />
     </div>
   );

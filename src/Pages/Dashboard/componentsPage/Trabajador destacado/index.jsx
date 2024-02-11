@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 function TrabajadorDes() {
   const [correo, setCorreo] = useState('');
   const [nombre, setNombre] = useState('');
+  
   useEffect(() => {
     getTrabajador();
   }, []); 

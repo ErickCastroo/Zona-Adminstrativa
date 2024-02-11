@@ -100,7 +100,7 @@ function DataTable() {
               className="hover:bg-gray-100 dark:hover:bg-slate-800"
             >
               {row.getVisibleCells().map((cell) => (
-                <td key={cell.id} className="py-1 px-4">
+                <td key={cell.id} className="py-1 px-1">
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </td>
               ))}
@@ -122,9 +122,24 @@ function DataTable() {
           <FaArrowLeft className="pagination-icon" />
         </button>
         <span className="text-gray-600 dark:text-slate-200">
-          Total de paginas: {Math.max(1, table.getPageCount())}
+          Página {table.options.state.pagination.pageIndex + 1} de{" "}
+          {Math.max(1, table.getPageCount())}
         </span>
-        <button onClick={() => table.nextPage()} className="pagination-button">
+        <button
+          onClick={() => {
+            if (
+              table.options.state.pagination.pageIndex <
+              table.getPageCount() - 1
+            ) {
+              table.nextPage();
+            }
+          }}
+          className="pagination-button"
+          disabled={
+            table.options.state.pagination.pageIndex ===
+            table.getPageCount() - 1
+          }
+        >
           <FaArrowRight className="pagination-icon" />
         </button>
         <button

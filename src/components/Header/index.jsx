@@ -32,15 +32,16 @@ const Header = () => {
   };
 
   return (
-    <div className="flex justify-between items-center p-1 bg-slate-800    dark:bg-slate-900  dark: text-slate-900">
+    <div className="flex justify-between items-center p-3 bg-slate-800    dark:bg-slate-900  dark: text-slate-900">
       {/* Logo a la izquierda */}
+      
       <div className="w-1/12">
-        <img src={logo} alt="Logo" className="w-full h-auto" />
+        {/* <img src='logo' alt="Logo" className="w-full h-auto" /> */}
+        <Switch />
       </div>
       <NavMenu />
       {/* Ícono de perfil a la derecha */}
       <Dialog>
-        <Switch />
         <DialogTrigger>
           <Avatar className="w-12 h-12 lg:w-10 lg:h-10 xl:w-20 xl:h-20">
             <AvatarImage
