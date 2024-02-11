@@ -58,21 +58,20 @@ function DataTable() {
   });
 
   return (
-    <div className="w-3/4 p-4  bg-white dark:bg-slate-800 dark:border-gray-200 rounded-md shadow-lg">
+    <div className="w-3/4 p-4  bg-white dark:bg-slate-900 dark:border border-gray-200 dark:border-gray-200 rounded-md shadow-lg">
       {" "}
       {/* Aplicar el fondo, sombra, ancho y relleno a toda la sección */}
       <div className="form">
         <input
-          className="dark:text-slate-200 dark:bg-slate-800 dark:placeholder-slate-400 border border-gray-400 p-2 rounded-md flex-grow"
+          className="dark:text-slate-200 dark:bg-slate-900 dark:placeholder-slate-400 border border-gray-400 p-2 rounded-md flex-grow"
           placeholder="Buscar"
           type="text"
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
         />
-        <span className="input-border"></span>
       </div>
-      <table className="w-3/4">
-        <thead className="pointer">
+      <table className=" m-6 mx-auto w-full">
+        <thead className="bg-gray-100 dark:bg-slate-900 border-b border-gray-300 dark:border-slate-900">
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
@@ -94,11 +93,14 @@ function DataTable() {
           ))}
         </thead>
 
-        <tbody>
+        <tbody className="divide-y divide-gray-200 dark:divide-slate-700">
           {table.getRowModel().rows.map((row) => (
-            <tr key={row.id}>
+            <tr
+              key={row.id}
+              className="hover:bg-gray-100 dark:hover:bg-slate-800"
+            >
               {row.getVisibleCells().map((cell) => (
-                <td key={cell.id}>
+                <td key={cell.id} className="py-1 px-4">
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </td>
               ))}

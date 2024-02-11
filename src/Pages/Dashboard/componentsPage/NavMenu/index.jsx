@@ -72,7 +72,7 @@ function NavMenu() {
     <NavigationMenu>
       <NavigationMenuList>
         {rutas?.map((ruta) => (
-          <NavigationMenuItem key={ruta.nombre} className="text-slate-800 dark:text-slate-200">
+          <NavigationMenuItem key={ruta.nombre} className="text-slate-900 dark:text-slate-200">
             <NavigationMenuTrigger>{ruta.nombre}</NavigationMenuTrigger>
             {/* Contenido del primer elemento del menú */}
             <NavigationMenuContent>
@@ -83,7 +83,7 @@ function NavMenu() {
                     {/* Enlace y contenido del primer elemento */}
                     <a
                       className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md dark:text-slate-200"
-                      href="/"
+                      
                     >
                       <div className="mb-2 mt-4 text-lg font-medium">{ruta.nombre}</div>
                       <p className="text-sm leading-tight text-muted-foreground">

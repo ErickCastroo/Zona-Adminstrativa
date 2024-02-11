@@ -1,5 +1,5 @@
 [
-    {"matricula": 1, "nombre": "Maryanna", "correo": "mamys0@abc.net.au", "rol": ""},
+    {"matricula": 1, "nombre": "Maryanna", "correo": "mamys0@abc.net.au", "rol": "0"},
     {"matricula": 2, "nombre": "Brandtr", "correo": "blonghorn1@ox.ac.uk", "rol": "1"},
     {"matricula": 3, "nombre": "Robinson", "correo": "racuna2@nps.gov", "rol": "1"},
     {"matricula": 4, "nombre": "Basilius", "correo": "bdelisle3@digg.com", "rol": "1"},
