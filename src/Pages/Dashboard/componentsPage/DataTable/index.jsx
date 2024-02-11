@@ -71,7 +71,7 @@ function DataTable() {
         />
       </div>
       <table className=" m-6 mx-auto w-full">
-        <thead className="bg-gray-100 dark:bg-slate-900 border-b border-gray-300 dark:border-slate-900">
+        <thead className=" dark:bg-slate-900 border-gray-300 dark:border-slate-900">
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (

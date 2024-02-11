@@ -9,7 +9,7 @@ function TrabajadorDes() {
   }, []); 
 
   const getTrabajador = async () => {
-    setCorreo('erick@gmail.com');
+    setCorreo('ErickCastro@gmail.com');
     setNombre('Erick Castro');
   }
 

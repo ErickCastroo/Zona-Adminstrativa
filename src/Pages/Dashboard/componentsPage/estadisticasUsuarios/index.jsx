@@ -16,8 +16,8 @@ useEffect(() => {
 }, [])
 
 const getRoles = async () => {
-  setAdmins('52')
-  setEntrenadores('13')
+  setAdmins('2')
+  setEntrenadores('41')
 }
 
 

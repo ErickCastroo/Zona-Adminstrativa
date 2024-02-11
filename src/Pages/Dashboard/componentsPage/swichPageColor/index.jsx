@@ -39,7 +39,7 @@ function Switch() {
             }`}
           ></div>
         </div>
-        <div className="ml-3 text-gray-300 dark:text-gray-300">
+        <div className="ml-1 text-gray-300 dark:text-gray-300">
           {tema === "dark" ? "Modo Oscuro" : "Modo Claro"}
         </div>
       </label>
