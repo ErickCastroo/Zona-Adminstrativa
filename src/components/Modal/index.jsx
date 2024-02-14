@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Portal from './Portal'
+import { IoCloseSharp } from "react-icons/io5";
 
 export default class Modal extends Component {
   render() {
@@ -9,47 +10,16 @@ export default class Modal extends Component {
       <Portal>
         {
           active && (
-            <div className="modal">
-              <div className="modal__container">
-                <button onClick={toggle} className="modal__close">
-                  X
+            <div class="fixed top-0 left-0 w-full h-full text-slate-200 bg-black bg-opacity-60 flex justify-center items-center">
+              <div className="relative  dark:bg-slate-900 text-slate-200 bg-white w-[70%] h-[70%] p-20 rounded-5 shadow-md">
+                <button onClick={toggle} className="absolute top-0 right-0 bg-transparent border-none text-2xl px-10 py-2 cursor-pointer">
+                  <IoCloseSharp/>
                 </button>
                 {children}
               </div>
-              <style jsx>{`
-                .modal {
-                  position: fixed;
-                  top: 0;
-                  left: 0;
-                  width: 100%;
-                  height: 100%;
-                  background-color: rgba(0, 0, 0, 0.6);
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                }
-                .modal__container {
-                  position: relative;
-                  background-color: #fff;
-                  padding: 20px;
-                  border-radius: 5px;
-                  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-                }
-                .modal__close {
-                  position: absolute;
-                  top: 0;
-                  right: 0;
-                  background-color: transparent;
-                  border: none;
-                  font-size: 20px;
-                  padding: 10px;
-                  cursor: pointer;
-                }
-              `}</style>
             </div>
           )
         }
-
       </Portal>
     )
   }

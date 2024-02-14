@@ -8,7 +8,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { ModalUser } from '@/components/Modal/Modals/ModalUser';
+import { ModalUser } from '@/components/Modal/Modals';
 
 const rutas = [
   {
