@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Modal from "../../index";
 
-function ModalUser({ closeModal }) {
+function ModalUserCrear({ closeModal }) {
   const [active, setActive] = useState(true);
   const [formData, setFormData] = useState({
     nombre: "",
@@ -49,11 +49,16 @@ function ModalUser({ closeModal }) {
   return (
     <Modal active={active} toggle={toggle}>
       <div className="flex flex-col justify-center items-center">
-        <h1 className="text-3xl font-bold text-black dark:text-white">Crear Usuario</h1>
+        <h1 className="text-3xl font-bold text-black dark:text-white">
+          Borrar Usuario
+        </h1>
       </div>
       <form className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 p-6">
         <div className="mb-4">
-          <label htmlFor="nombre" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+          <label
+            htmlFor="nombre"
+            className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+          >
             Nombre
           </label>
           <input
@@ -67,7 +72,10 @@ function ModalUser({ closeModal }) {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="correo" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+          <label
+            htmlFor="correo"
+            className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+          >
             Correo Electrónico
           </label>
           <input
@@ -81,7 +89,10 @@ function ModalUser({ closeModal }) {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="contraseña" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+          <label
+            htmlFor="contraseña"
+            className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+          >
             Contraseña
           </label>
           <input
@@ -95,7 +106,10 @@ function ModalUser({ closeModal }) {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="rol" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+          <label
+            htmlFor="rol"
+            className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+          >
             Rol
           </label>
           <select
@@ -110,17 +124,16 @@ function ModalUser({ closeModal }) {
           </select>
         </div>
         <div className="col-span-1 sm:col-span-2 flex justify-center items-center mt-4">
-        <button
-          type="submit"
-          className="bg-blue-500 text-white py-2 px-2 sm:px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
-        >
-          Crear Usuario
-        </button>
-      </div>
+          <button
+            type="submit"
+            className="bg-blue-500 text-white py-2 px-2 sm:px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
+          >
+            Crear Usuario
+          </button>
+        </div>
       </form>
     </Modal>
   );
-  
 }
 
-export { ModalUser };
+export { ModalUserCrear };
