@@ -8,11 +8,17 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { ModalUser } from '@/components/Modal/Modals';
+import { ModalUser } from '@/components/Modal/Modals/modalUser';
+import { ModalTraining } from '@/components/Modal/Modals/modaltrainig';
+
 
 const rutas = [
   {
     nombre: 'Usuarios',
+    modalCrear: (setModalVisible) => <ModalUser closeModal={() => setModalVisible(false)} />,
+    modalEditar: (setModalVisible) => <ModalUser closeModal={() => setModalVisible(false)} />,
+    modalBorrar: (setModalVisible) => <ModalUser closeModal={() => setModalVisible(false)} />,
+    modalVer: (setModalVisible) => <ModalUser closeModal={() => setModalVisible(false)} />,
   },
   {
     nombre: 'Intenciones',
@@ -28,6 +34,10 @@ const rutas = [
   },
   {
     nombre: 'Entretenimiento',
+    modalCrear: (setModalVisible) => <ModalTraining closeModal={() => setModalVisible(false)} />,
+    modalEditar: (setModalVisible) => <ModalTraining closeModal={() => setModalVisible(false)} />,
+    modalBorrar: (setModalVisible) => <ModalTraining closeModal={() => setModalVisible(false)} />,
+    modalVer: (setModalVisible) => <ModalTraining closeModal={() => setModalVisible(false)} />,
   },
   {
     nombre: 'Reglas',
@@ -37,30 +47,28 @@ const rutas = [
   },
 ];
 
-const component = ({ nombre, openModal, setModalVisible, setModalContent }) => {
-  return [
-    {
-      title: `Crear ${nombre}`,
-      onClick: () => openModal(<ModalUser closeModal={() => setModalVisible(false)} />),
-      description: `Crear una nueva ${nombre}`,
-    },
-    {
-      title: `Borrar ${nombre}`,
-      onClick: () => openModal(<ModalUser closeModal={() => setModalVisible(false)} />),
-      description: `Borrar una ${nombre}`,
-    },
-    {
-      title: `Editar ${nombre}`,
-      onClick: () => openModal(<ModalUser closeModal={() => setModalVisible(false)} />),
-      description: `Editar una ${nombre}`,
-    },
-    {
-      title: `Ver ${nombre}`,
-      onClick: () => openModal(<ModalUser closeModal={() => setModalVisible(false)} />),
-      description: `Ver una ${nombre}`,
-    },
-  ];
-};
+const component = ({ nombre, openModal, setModalVisible, modalBorrar = undefined, modalCrear = undefined, modalEditar = undefined, modalVer = undefined}) => [
+  {
+    title: `Crear ${nombre}`,
+    onClick: modalCrear ? () => openModal(modalCrear(setModalVisible)) : undefined,
+    description: `Crear una nueva ${nombre}`,
+  },
+  {
+    title: `Borrar ${nombre}`,
+    onClick: modalBorrar ? () => openModal(modalBorrar(setModalVisible)) : undefined,
+    description: `Borrar una ${nombre}`,
+  },
+  {
+    title: `Editar ${nombre}`,
+    onClick: modalEditar ? () => openModal(modalEditar(setModalVisible)) : undefined,
+    description: `Editar una ${nombre}`,
+  },
+  {
+    title: `Ver ${nombre}`,
+    onClick: modalVer ? () => openModal(modalVer(setModalVisible)) : undefined,
+    description: `Ver una ${nombre}`,
+  },
+];
 
 function NavMenu() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -71,13 +79,11 @@ function NavMenu() {
     setModalVisible(true);
   };
 
-  const closeModal = () => {
-    setModalContent(null);
-    setModalVisible(false);
-  };
 
   return (
     <div>
+      {modalVisible && modalContent}
+      
       <NavigationMenu>
         <NavigationMenuList>
           {rutas?.map((ruta) => (
@@ -97,7 +103,7 @@ function NavMenu() {
                       </a>
                     </NavigationMenuLink>
                   </li>
-                  {component({ nombre: ruta.nombre, openModal, setModalVisible, setModalContent }).map((component, index) => (
+                  {component({ nombre: ruta.nombre, openModal, setModalVisible, setModalContent, modalCrear: ruta?.modalCrear, modalBorrar: ruta?.modalBorrar, modalEditar: ruta?.modalEditar, modalVer: ruta?.modalVer  }).map((component, index) => (
                     <ListItem
                       key={index}
                       title={component.title}
@@ -112,34 +118,26 @@ function NavMenu() {
           ))}
         </NavigationMenuList>
       </NavigationMenu>
-
-      {modalVisible && (
-        <div>
-          {modalContent}
-        </div>
-      )}
     </div>
   );
 }
 
-const ListItem = React.forwardRef(({ title, onClick, children, ...props }, ref) => {
-  return (
-    <li>
-      <a
-        className={cn(
-          "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-        )}
-        onClick={onClick}
-        {...props}
-      >
-        <div className="text-sm font-medium leading-none">{title}</div>
-        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-          {children}
-        </p>
-      </a>
-    </li>
-  );
-});
+const ListItem = React.forwardRef(({ title, onClick, children, ...props }, ref) => (
+  <li>
+    <a
+      className={cn(
+        "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+      )}
+      onClick={onClick}
+      {...props}
+    >
+      <div className="text-sm font-medium leading-none">{title}</div>
+      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+        {children}
+      </p>
+    </a>
+  </li>
+));
 
 ListItem.displayName = "ListItem";
 

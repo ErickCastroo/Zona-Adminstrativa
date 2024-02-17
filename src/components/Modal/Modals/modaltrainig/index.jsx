@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Modal from "../index";
+import Modal from "../../index";
 
-function ModalUser({ closeModal }) {
+function ModalTraining({ closeModal }) {
   const [active, setActive] = useState(true); // Cambiado a true inicialmente, ajusta según tus necesidades
   const toggle = () => {
     setActive(!active);
@@ -16,4 +16,4 @@ function ModalUser({ closeModal }) {
   );
 }
 
-export { ModalUser };
+export { ModalTraining };
