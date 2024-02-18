@@ -135,6 +135,7 @@ function ModalCrearIntencion({ closeModal }) {
             className="mt-1 p-2 border rounded-md w-full dark:text-black focus:outline-none focus:ring focus:border-blue-300"
           />
         </div>
+        
         <div className="flex justify-center items-center mt-4">
           <button
             type="submit"
