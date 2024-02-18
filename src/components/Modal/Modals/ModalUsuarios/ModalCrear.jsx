@@ -50,7 +50,7 @@ function ModalUserCrear({ closeModal }) {
     <Modal active={active} toggle={toggle}>
       <div className="flex flex-col justify-center items-center">
         <h1 className="text-3xl font-bold text-black dark:text-white">
-          Borrar Usuario
+          Crear Usuario
         </h1>
       </div>
       <form className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 p-6">

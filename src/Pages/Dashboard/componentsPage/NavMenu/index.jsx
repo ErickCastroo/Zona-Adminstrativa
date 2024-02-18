@@ -5,14 +5,14 @@ import {NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMen
 //import todos los Modales del nav menu
 //user
 import { ModalUserCrear } from "@/components/Modal/Modals/ModalUsuarios/ModalCrear";
-// import { ModalUserCrear } from "@/components/Modal/Modals/ModalUsuarios/ModalBorrar";
-// import { ModalUserCrear } from "@/components/Modal/Modals/ModalUsuarios/ModalEditar";
-// import { ModalUserCrear } from "@/components/Modal/Modals/ModalUsuarios/ModalVer";
+import { ModalUserBorrar } from "@/components/Modal/Modals/ModalUsuarios/ModalBorrar";
+import { ModalUserEditar } from "@/components/Modal/Modals/ModalUsuarios/ModalEditar";
+import { ModalUserVer } from "@/components/Modal/Modals/ModalUsuarios/ModalVer";
 
 // //intenciones
-// import { ModalBorrarUser } from "@/components/Modal/Modals/ModalIntenciones/ModalCrear";
-// import { ModalBorrarUser } from "@/components/Modal/Modals/ModalIntenciones/ModalBorrar";
-// import { ModalBorrarUser } from "@/components/Modal/Modals/ModalIntenciones/ModalEditar";
+import { ModalCrearIntencion } from "@/components/Modal/Modals/ModalIntenciones/ModalCrear";
+import { ModalBorrarIntencion } from "@/components/Modal/Modals/ModalIntenciones/ModalBorrar";
+import { ModalEditarIntencion } from "@/components/Modal/Modals/ModalIntenciones/ModalEditar";
 // import { ModalBorrarUser } from "@/components/Modal/Modals/ModalIntenciones/ModalVer";
 
 // //respuestas
@@ -61,15 +61,15 @@ const rutas = [
   {
     nombre: 'Usuarios',
     modalCrear: (setModalVisible) => <ModalUserCrear closeModal={() => setModalVisible(false)} />,
-    modalEditar: (setModalVisible) => <ModalBorrarUser closeModal={() => setModalVisible(false)} />,
-    modalBorrar: (setModalVisible) => <ModalBorrarUser closeModal={() => setModalVisible(false)} />,
-    modalVer: (setModalVisible) => <ModalUserCrear closeModal={() => setModalVisible(false)} />,
+    modalEditar: (setModalVisible) => <ModalUserEditar closeModal={() => setModalVisible(false)} />,
+    modalBorrar: (setModalVisible) => <ModalUserBorrar closeModal={() => setModalVisible(false)} />,
+    modalVer: (setModalVisible) => <ModalUserVer closeModal={() => setModalVisible(false)} />,
   },
   {
     nombre: 'Intenciones',
-    modalCrear: (setModalVisible) => <ModalUserCrear closeModal={() => setModalVisible(false)} />,
-    modalEditar: (setModalVisible) => <ModalUserCrear closeModal={() => setModalVisible(false)} />,
-    modalBorrar: (setModalVisible) => <ModalUserCrear closeModal={() => setModalVisible(false)} />,
+    modalCrear: (setModalVisible) => <ModalCrearIntencion closeModal={() => setModalVisible(false)} />,
+    modalEditar: (setModalVisible) => <ModalEditarIntencion closeModal={() => setModalVisible(false)} />,
+    modalBorrar: (setModalVisible) => <ModalBorrarIntencion closeModal={() => setModalVisible(false)} />,
     modalVer: (setModalVisible) => <ModalUserCrear closeModal={() => setModalVisible(false)} />,
   },
   {
