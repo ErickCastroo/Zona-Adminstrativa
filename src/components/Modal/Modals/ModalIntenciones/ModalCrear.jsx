@@ -1,15 +1,20 @@
+// Importa React y el componente Modal desde el archivo "../../index"
 import React, { useState } from "react";
 import Modal from "../../index";
 
+// Componente funcional ModalCrearIntencion
 function ModalCrearIntencion({ closeModal }) {
+  // Estado local para controlar la visibilidad del modal
   const [active, setActive] = useState(true);
+
+  // Estado local para almacenar los datos de la intención
   const [intentData, setIntentData] = useState({
     descripcion: "",
     ejemplos: "",
     nombre_intent: "",
-    nombre_respuesta: "",
   });
 
+  // Función para manejar cambios en los campos de entrada
   const handleChange = (e) => {
     setIntentData({
       ...intentData,
@@ -17,6 +22,7 @@ function ModalCrearIntencion({ closeModal }) {
     });
   };
 
+  // Función para manejar cambios en el campo de ejemplos separados por coma
   const handleExamplesChange = (e) => {
     // Puedes analizar la entrada del usuario para crear una matriz de ejemplos
     const examples = e.target.value.split(",");
@@ -26,18 +32,33 @@ function ModalCrearIntencion({ closeModal }) {
     });
   };
 
+  // Función para alternar la visibilidad del modal y cerrarlo
+  const toggle = () => {
+    setActive(!active);
+    closeModal();
+  };
+
+  // Función para manejar el envío del formulario
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Agregar el prefijo "utter_" al nombre de respuesta
+    const updatedIntentData = {
+      ...intentData,
+      nombre_respuesta: `utter_${intentData.nombre_intent}`,
+    };
+
     try {
+      // Realiza una solicitud fetch para enviar los datos al servidor
       const response = await fetch("URL_DE_TU_API_PARA_CREAR_INTENCION", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(intentData),
+        body: JSON.stringify(updatedIntentData),
       });
 
+      // Verifica si la respuesta del servidor es exitosa
       if (response.ok) {
         console.log("Intención creada exitosamente");
         // Realizar acciones adicionales si es necesario
@@ -46,17 +67,17 @@ function ModalCrearIntencion({ closeModal }) {
         // Mostrar un mensaje de error al usuario
       }
     } catch (error) {
-      console.error("Error en la petición fetch para la creación de intención", error);
+      console.error(
+        "Error en la petición fetch para la creación de intención",
+        error
+      );
     }
 
+    // Cierra el modal después de enviar el formulario
     toggle();
   };
 
-  const toggle = () => {
-    setActive(!active);
-    closeModal();
-  };
-
+  // Renderiza el componente ModalCrearIntencion
   return (
     <Modal active={active} toggle={toggle}>
       <div className="flex flex-col justify-center items-center">
@@ -75,7 +96,7 @@ function ModalCrearIntencion({ closeModal }) {
           <textarea
             id="descripcion"
             name="descripcion"
-            placeholder="Esta intención esta diseñada con el fin de saludar al bot y que este devuelva el saludo"
+            placeholder="Esta intención está diseñada con el fin de saludar al bot y que este devuelva el saludo"
             value={intentData.descripcion}
             onChange={handleChange}
             className="mt-1 p-2 border rounded-md w-full dark:text-black focus:outline-none focus:ring focus:border-blue-300"
@@ -86,13 +107,12 @@ function ModalCrearIntencion({ closeModal }) {
             htmlFor="ejemplos"
             className="block text-sm font-medium text-gray-700 dark:text-gray-300"
           >
-            {/*cada vez que el usuario ingrese una coma en el campo de texto, la cadena se dividirá en múltiples elementos en el array. */}
             Ejemplos (separados por coma)
           </label>
           <textarea
             id="ejemplos"
             name="ejemplos"
-            placeholder="Ejemplo: Hola como estas, Hey que tal, Buenos dias"
+            placeholder="Ejemplo: Hola como estas, Hey que tal, Buenos días"
             value={intentData.ejemplos}
             onChange={handleExamplesChange}
             className="mt-1 p-2 border rounded-md w-full dark:text-black focus:outline-none focus:ring focus:border-blue-300"
@@ -115,23 +135,6 @@ function ModalCrearIntencion({ closeModal }) {
             className="mt-1 p-2 border rounded-md w-full dark:text-black focus:outline-none focus:ring focus:border-blue-300"
           />
         </div>
-        <div className="mb-4">
-          <label
-            htmlFor="nombre_respuesta"
-            className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-          >
-            Nombre de la Respuesta
-          </label>
-          <input
-            type="text"
-            id="nombre_respuesta"
-            name="nombre_respuesta"
-            placeholder="utter_saludar"
-            value={intentData.nombre_respuesta}
-            onChange={handleChange}
-            className="mt-1 p-2 border rounded-md w-full dark:text-black focus:outline-none focus:ring focus:border-blue-300"
-          />
-        </div>
         <div className="flex justify-center items-center mt-4">
           <button
             type="submit"
@@ -145,4 +148,5 @@ function ModalCrearIntencion({ closeModal }) {
   );
 }
 
+// Exporta el componente ModalCrearIntencion
 export { ModalCrearIntencion };
