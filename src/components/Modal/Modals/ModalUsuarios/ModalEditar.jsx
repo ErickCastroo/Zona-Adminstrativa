@@ -68,7 +68,7 @@ function ModalUserEditar({ closeModal }) {
             value={formData.nombre}
             placeholder="Nombre completo"
             onChange={handleChange}
-            className="mt-1 p-2 border rounded-md w-full dark:text-black focus:outline-none focus:ring focus:border-blue-300"
+            className="mt-1 p-2 border rounded-md w-full text-black focus:outline-none focus:ring focus:border-blue-300"
           />
         </div>
         <div className="mb-4">
@@ -85,7 +85,7 @@ function ModalUserEditar({ closeModal }) {
             name="correo"
             value={formData.correo}
             onChange={handleChange}
-            className="mt-1 p-2 border rounded-md w-full dark:text-black focus:outline-none focus:ring focus:border-blue-300"
+            className="mt-1 p-2 border rounded-md w-full text-black focus:outline-none focus:ring focus:border-blue-300"
           />
         </div>
         <div className="mb-4">
@@ -102,7 +102,7 @@ function ModalUserEditar({ closeModal }) {
             placeholder="********"
             value={formData.contraseña}
             onChange={handleChange}
-            className="mt-1 p-2 border rounded-md w-full dark:text-black focus:outline-none focus:ring focus:border-blue-300"
+            className="mt-1 p-2 border rounded-md w-full text-black focus:outline-none focus:ring focus:border-blue-300"
           />
         </div>
         <div className="mb-4">
@@ -117,7 +117,7 @@ function ModalUserEditar({ closeModal }) {
             name="rol"
             value={formData.rol}
             onChange={handleChange}
-            className="mt-1 p-2 border rounded-md w-full dark:text-black focus:outline-none focus:ring focus:border-blue-300"
+            className="mt-1 p-2 border rounded-md w-full text-black focus:outline-none focus:ring focus:border-blue-300"
           >
             <option value="entrenador">Entrenador</option>
             <option value="admin">Admin</option>

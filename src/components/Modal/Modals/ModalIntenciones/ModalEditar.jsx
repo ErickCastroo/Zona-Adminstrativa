@@ -116,7 +116,7 @@ const handleIntentChange = (e) => {
                 name="intencionSeleccionada"
                 value={intentData.intencionSeleccionada}
                 onChange={handleIntentChange}
-                className="mt-1 p-2 border rounded-md w-full dark:text-black focus:outline-none focus:ring focus:border-blue-300"
+                className="mt-1 p-2 border rounded-md w-full text-black focus:outline-none focus:ring focus:border-blue-300"
               >
                 {/* Opción predeterminada deshabilitada */}
                 <option value="" disabled>
@@ -143,7 +143,7 @@ const handleIntentChange = (e) => {
                 placeholder="saludar"
                 value={intentData.nombre_intent}
                 onChange={(e) => setIntentData({ ...intentData, nombre_intent: e.target.value })}
-                className="mt-1 p-2 border rounded-md w-full dark:text-black focus:outline-none focus:ring focus:border-blue-300"
+                className="mt-1 p-2 border rounded-md w-full text-black focus:outline-none focus:ring focus:border-blue-300"
               />
             </div>
 
@@ -158,7 +158,7 @@ const handleIntentChange = (e) => {
                 placeholder="Ejemplo: Hola como estas, Hey que tal, Buenos días"
                 value={intentData.ejemplos}
                 onChange={(e) => setIntentData({ ...intentData, ejemplos: e.target.value })}
-                className="mt-1 p-2 border rounded-md w-full dark:text-black focus:outline-none focus:ring focus:border-blue-300"
+                className="mt-1 p-2 border rounded-md w-full text-black focus:outline-none focus:ring focus:border-blue-300"
               />
             </div>
 
@@ -173,7 +173,7 @@ const handleIntentChange = (e) => {
                 placeholder="Esta intención está diseñada con el fin de saludar al bot y que este devuelva el saludo"
                 value={intentData.descripcion}
                 onChange={(e) => setIntentData({ ...intentData, descripcion: e.target.value })}
-                className="mt-1 p-2 border rounded-md w-full dark:text-black focus:outline-none focus:ring focus:border-blue-300"
+                className="mt-1 p-2 border rounded-md w-full text-black focus:outline-none focus:ring focus:border-blue-300"
               />
             </div>
 

@@ -99,7 +99,7 @@ function ModalCrearIntencion({ closeModal }) {
             placeholder="Esta intención está diseñada con el fin de saludar al bot y que este devuelva el saludo"
             value={intentData.descripcion}
             onChange={handleChange}
-            className="mt-1 p-2 border rounded-md w-full dark:text-black focus:outline-none focus:ring focus:border-blue-300"
+            className="mt-1 p-2 border rounded-md w-full text-black focus:outline-none focus:ring focus:border-blue-300"
           />
         </div>
         <div className="mb-4">
@@ -115,7 +115,7 @@ function ModalCrearIntencion({ closeModal }) {
             placeholder="Ejemplo: Hola como estas, Hey que tal, Buenos días"
             value={intentData.ejemplos}
             onChange={handleExamplesChange}
-            className="mt-1 p-2 border rounded-md w-full dark:text-black focus:outline-none focus:ring focus:border-blue-300"
+            className="mt-1 p-2 border rounded-md w-full text-black focus:outline-none focus:ring focus:border-blue-300"
           />
         </div>
         <div className="mb-4">
@@ -132,7 +132,7 @@ function ModalCrearIntencion({ closeModal }) {
             placeholder="saludar"
             value={intentData.nombre_intent}
             onChange={handleChange}
-            className="mt-1 p-2 border rounded-md w-full dark:text-black focus:outline-none focus:ring focus:border-blue-300"
+            className="mt-1 p-2 border rounded-md w-full text-black focus:outline-none focus:ring focus:border-blue-300"
           />
         </div>
         

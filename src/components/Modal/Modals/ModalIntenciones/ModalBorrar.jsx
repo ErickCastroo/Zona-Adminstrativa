@@ -88,7 +88,7 @@ function ModalBorrarIntencion({ closeModal }) {
             name="intencionSeleccionada"
             value={intentData.intencionSeleccionada}
             onChange={handleIntentChange}
-            className="mt-1 p-2 border rounded-md w-full dark:text-black focus:outline-none focus:ring focus:border-blue-300"
+            className="mt-1 p-2 border rounded-md w-full text-black focus:outline-none focus:ring focus:border-blue-300"
           >
             {/* Opción predeterminada deshabilitada */}
             <option value="" disabled>
