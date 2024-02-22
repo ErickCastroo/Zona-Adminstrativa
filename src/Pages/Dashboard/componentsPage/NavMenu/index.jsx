@@ -4,53 +4,71 @@ import {NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMen
 
 //import todos los Modales del nav menu
 //user
-import { ModalUserCrear } from "@/components/Modal/Modals/ModalUsuarios/ModalCrear";
-import { ModalUserBorrar } from "@/components/Modal/Modals/ModalUsuarios/ModalBorrar";
-import { ModalUserEditar } from "@/components/Modal/Modals/ModalUsuarios/ModalEditar";
-import { ModalUserVer } from "@/components/Modal/Modals/ModalUsuarios/ModalVer";
+
+import {
+  ModalUserCrear,
+  ModalUserBorrar,
+  ModalUserEditar, 
+  ModalUserVer 
+} from "@/components/Modal/Modals/ModalUsuarios";
 
 // //intenciones
-import { ModalCrearIntencion } from "@/components/Modal/Modals/ModalIntenciones/ModalCrear";
-import { ModalBorrarIntencion } from "@/components/Modal/Modals/ModalIntenciones/ModalBorrar";
-import { ModalEditarIntencion } from "@/components/Modal/Modals/ModalIntenciones/ModalEditar";
-// import { ModalBorrarUser } from "@/components/Modal/Modals/ModalIntenciones/ModalVer";
+import {
+  ModalCrearIntencion,
+  ModalBorrarIntencion, 
+  ModalEditarIntencion
+} from "@/components/Modal/Modals/ModalIntenciones";
+
 
 // //respuestas
-// import { ModalBorrarUser } from "@/components/Modal/Modals/ModalRespuestas/ModalCrear";
-// import { ModalBorrarUser } from "@/components/Modal/Modals/ModalRespuestas/ModalBorrar";
-// import { ModalBorrarUser } from "@/components/Modal/Modals/ModalRespuestas/ModalEditar";
-// import { ModalBorrarUser } from "@/components/Modal/Modals/ModalRespuestas/ModalVer";
+import {
+  ModalResCrear,
+  ModalResBorrar, 
+  ModalResEditar, 
+  ModalResVer 
+} from "@/components/Modal/Modals/ModalRespuestas/";
 
 // //historias
-// import { ModalBorrarUser } from "@/components/Modal/Modals/ModalHistorias/ModalCrear";
-// import { ModalBorrarUser } from "@/components/Modal/Modals/ModalHistorias/ModalBorrar";
-// import { ModalBorrarUser } from "@/components/Modal/Modals/ModalHistorias/ModalEditar";
-// import { ModalBorrarUser } from "@/components/Modal/Modals/ModalHistorias/ModalVer";
+import{
+  ModalCrearHistorias, 
+  ModalBorrarHistorias, 
+  ModalEditarHistorias, 
+  ModalVerHistorias
+} from "@/components/Modal/Modals/ModalHistorias/";
 
 // //pasos
-// import { ModalBorrarUser } from "@/components/Modal/Modals/ModalPasos/ModalCrear";
-// import { ModalBorrarUser } from "@/components/Modal/Modals/ModalPasos/ModalBorrar";
-// import { ModalBorrarUser } from "@/components/Modal/Modals/ModalPasos/ModalEditar";
-// import { ModalBorrarUser } from "@/components/Modal/Modals/ModalPasos/ModalVer";
+import {
+  ModalCrearPasos,
+  ModalBorrarPasos,
+  ModalEditarPasos,
+  ModalVerPasos
+} from "@/components/Modal/Modals/ModalPasos/";
+
 
 // //entretenimiento
-// import { ModalTraining } from "@/components/Modal/Modals/ModalEntretenimiento/ModalCrear";
-// import { ModalTraining } from "@/components/Modal/Modals/ModalEntretenimiento/ModalBorrar";
-// import { ModalTraining } from "@/components/Modal/Modals/ModalEntretenimiento/ModalEditar";
-// import { ModalTraining } from "@/components/Modal/Modals/ModalEntretenimiento/ModalVer";
+import {
+  ModalCrearEntrenamiento,
+  ModalBorrarEntrenamiento,
+  ModalEditarEntrenamiento,
+  ModalVerEntrenamiento
+} from "@/components/Modal/Modals/ModalEntrenamiento/";
 
 // //reglas
-// import { ModalBorrarUser } from "@/components/Modal/Modals/ModalReglas/ModalCrear";
-// import { ModalBorrarUser } from "@/components/Modal/Modals/ModalReglas/ModalBorrar";
-// import { ModalBorrarUser } from "@/components/Modal/Modals/ModalReglas/ModalEditar";
-// import { ModalBorrarUser } from "@/components/Modal/Modals/ModalReglas/ModalVer";
+import {
+  ModalCrearPasosR,
+  ModalBorrarPasosR,
+  ModalEditarPasosR,
+  ModalVerPasosR
+} from "@/components/Modal/Modals/ModalPasosReglas/";
+
 
 // //pasos reglas
-// import { ModalBorrarUser } from "@/components/Modal/Modals/ModalPasosReglas/ModalCrear";
-// import { ModalBorrarUser } from "@/components/Modal/Modals/ModalPasosReglas/ModalBorrar";
-// import { ModalBorrarUser } from "@/components/Modal/Modals/ModalPasosReglas/ModalEditar";
-// import { ModalBorrarUser } from "@/components/Modal/Modals/ModalPasosReglas/ModalVer";
-
+import {
+  ModalCrearReglas,
+  ModalBorrarReglas,
+  ModalEditarReglas,
+  ModalVerReglas
+} from "@/components/Modal/Modals/ModalReglas/";
 
 
 
@@ -74,45 +92,45 @@ const rutas = [
   },
   {
     nombre: 'Respuestas',
-    modalCrear: (setModalVisible) => <ModalUserCrear closeModal={() => setModalVisible(false)} />,
-    modalEditar: (setModalVisible) => <ModalUserCrear closeModal={() => setModalVisible(false)} />,
-    modalBorrar: (setModalVisible) => <ModalUserCrear closeModal={() => setModalVisible(false)} />,
-    modalVer: (setModalVisible) => <ModalUserCrear closeModal={() => setModalVisible(false)} />,
+    modalCrear: (setModalVisible) => <ModalResCrear closeModal={() => setModalVisible(false)} />,
+    modalEditar: (setModalVisible) => <ModalResEditar closeModal={() => setModalVisible(false)} />,
+    modalBorrar: (setModalVisible) => <ModalResBorrar closeModal={() => setModalVisible(false)} />,
+    modalVer: (setModalVisible) => <ModalResVer closeModal={() => setModalVisible(false)} />,
   },
   {
     nombre: 'Historias',
-    modalCrear: (setModalVisible) => <ModalUserCrear closeModal={() => setModalVisible(false)} />,
-    modalEditar: (setModalVisible) => <ModalUserCrear closeModal={() => setModalVisible(false)} />,
-    modalBorrar: (setModalVisible) => <ModalUserCrear closeModal={() => setModalVisible(false)} />,
-    modalVer: (setModalVisible) => <ModalUserCrear closeModal={() => setModalVisible(false)} />,
+    modalCrear: (setModalVisible) => <ModalCrearHistorias closeModal={() => setModalVisible(false)} />,
+    modalEditar: (setModalVisible) => <ModalEditarHistorias closeModal={() => setModalVisible(false)} />,
+    modalBorrar: (setModalVisible) => <ModalBorrarHistorias closeModal={() => setModalVisible(false)} />,
+    modalVer: (setModalVisible) => <ModalVerHistorias closeModal={() => setModalVisible(false)} />,
   },
   {
     nombre: 'Pasos',
-    modalCrear: (setModalVisible) => <ModalUserCrear closeModal={() => setModalVisible(false)} />,
-    modalEditar: (setModalVisible) => <ModalUserCrear closeModal={() => setModalVisible(false)} />,
-    modalBorrar: (setModalVisible) => <ModalUserCrear closeModal={() => setModalVisible(false)} />,
-    modalVer: (setModalVisible) => <ModalUserCrear closeModal={() => setModalVisible(false)} />,
+    modalCrear: (setModalVisible) => <ModalCrearPasos closeModal={() => setModalVisible(false)} />,
+    modalEditar: (setModalVisible) => <ModalEditarPasos closeModal={() => setModalVisible(false)} />,
+    modalBorrar: (setModalVisible) => <ModalBorrarPasos closeModal={() => setModalVisible(false)} />,
+    modalVer: (setModalVisible) => <ModalVerPasos closeModal={() => setModalVisible(false)} />,
   },
   {
     nombre: 'Entretenimiento',
-    modalCrear: (setModalVisible) => <ModalTraining closeModal={() => setModalVisible(false)} />,
-    modalEditar: (setModalVisible) => <ModalTraining closeModal={() => setModalVisible(false)} />,
-    modalBorrar: (setModalVisible) => <ModalTraining closeModal={() => setModalVisible(false)} />,
-    modalVer: (setModalVisible) => <ModalTraining closeModal={() => setModalVisible(false)} />,
+    modalCrear: (setModalVisible) => <ModalCrearEntrenamiento closeModal={() => setModalVisible(false)} />,
+    modalEditar: (setModalVisible) => <ModalEditarEntrenamiento closeModal={() => setModalVisible(false)} />,
+    modalBorrar: (setModalVisible) => <ModalBorrarEntrenamiento closeModal={() => setModalVisible(false)} />,
+    modalVer: (setModalVisible) => <ModalVerEntrenamiento closeModal={() => setModalVisible(false)} />,
   },
   {
     nombre: 'Reglas',
-    modalCrear: (setModalVisible) => <ModalUserCrear closeModal={() => setModalVisible(false)} />,
-    modalEditar: (setModalVisible) => <ModalUserCrear closeModal={() => setModalVisible(false)} />,
-    modalBorrar: (setModalVisible) => <ModalUserCrear closeModal={() => setModalVisible(false)} />,
-    modalVer: (setModalVisible) => <ModalUserCrear closeModal={() => setModalVisible(false)} />,
+    modalCrear: (setModalVisible) => <ModalCrearReglas closeModal={() => setModalVisible(false)} />,
+    modalEditar: (setModalVisible) => <ModalEditarReglas closeModal={() => setModalVisible(false)} />,
+    modalBorrar: (setModalVisible) => <ModalBorrarReglas closeModal={() => setModalVisible(false)} />,
+    modalVer: (setModalVisible) => <ModalVerReglas closeModal={() => setModalVisible(false)} />,
   },
   {
     nombre: 'Pasos Reglas ',
-    modalCrear: (setModalVisible) => <ModalUserCrear closeModal={() => setModalVisible(false)} />,
-    modalEditar: (setModalVisible) => <ModalUserCrear closeModal={() => setModalVisible(false)} />,
-    modalBorrar: (setModalVisible) => <ModalUserCrear closeModal={() => setModalVisible(false)} />,
-    modalVer: (setModalVisible) => <ModalUserCrear closeModal={() => setModalVisible(false)} />,
+    modalCrear: (setModalVisible) => <ModalCrearPasosR closeModal={() => setModalVisible(false)} />,
+    modalEditar: (setModalVisible) => <ModalEditarPasosR closeModal={() => setModalVisible(false)} />,
+    modalBorrar: (setModalVisible) => <ModalBorrarPasosR closeModal={() => setModalVisible(false)} />,
+    modalVer: (setModalVisible) => <ModalVerPasosR closeModal={() => setModalVisible(false)} />,
   },
 ];
 
