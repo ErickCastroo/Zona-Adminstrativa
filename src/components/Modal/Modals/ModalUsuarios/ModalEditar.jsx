@@ -1,14 +1,82 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { back_url } from "@/config/const";
+import { useAuth } from "@/contexts/AuthContext/useAuth";
 import Modal from "../../index";
+import Swal from "sweetalert2";
 
 function ModalUserEditar({ closeModal }) {
+  const { usuario } = useAuth();
+
   const [active, setActive] = useState(true);
   const [formData, setFormData] = useState({
+    matricula: "",
     nombre: "",
     correo: "",
-    contraseña: "",
-    rol: "entrenador",
+    rol: "",
   });
+  const [matriculas, setMatriculas] = useState([]);
+
+  useEffect(() => {
+    obtenerMatriculas();
+  }, []);
+
+  const obtenerMatriculas = async () => {
+    try {
+      const response = await fetch(`${back_url}/usuarios`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${usuario.token}`,
+        },
+      });
+      if (response.ok) {
+        const data = await response.json();
+        setMatriculas(data.map(usuario => usuario.matricula));
+      } else {
+        console.error("Error al obtener las matrículas");
+      }
+    } catch (error) {
+      console.error("Error en la petición fetch para obtener matrículas", error);
+    }
+  };
+  const alert = () => {
+    Swal.fire({
+      title: "Usuario actualizado",
+      text: "El usuario ha sido actualizado exitosamente",
+      icon: "success",
+      confirmButtonText: "Aceptar",
+    });
+  };
+  const alertError = () => {
+    Swal.fire({
+      title: "Error al actualizar usuario",
+      text: "Ocurrió un error al actualizar el usuario",
+      icon: "error",
+      confirmButtonText: "Aceptar",
+    });
+  };
+
+
+  const handleChangeMatricula = async (e) => {
+    const matriculaSeleccionada = e.target.value;
+    try {
+      const response = await fetch(`${back_url}/usuarios/${matriculaSeleccionada}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${usuario.token}`,
+        },
+      });
+      if (response.ok) {
+        const userData = await response.json();
+        setFormData(userData);
+      } else {
+        console.error("Error al obtener los detalles del usuario");
+      }
+    } catch (error) {
+      console.error("Error en la petición fetch para obtener detalles del usuario", error);
+    }
+  };
 
   const handleChange = (e) => {
     setFormData({
@@ -21,20 +89,24 @@ function ModalUserEditar({ closeModal }) {
     e.preventDefault();
 
     try {
-      const response = await fetch("URL_DE_TU_API", {
-        method: "POST",
+      const response = await fetch(`${back_url}/usuarios/${formData.matricula}`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${usuario.token}`,
         },
         body: JSON.stringify(formData),
       });
 
       if (response.ok) {
-        console.log("Usuario creado exitosamente");
+        alert();
+        console.log("Usuario actualizado exitosamente");
       } else {
-        console.error("Error al crear usuario");
+        alertError();
+        console.error("Error al actualizar usuario");
       }
     } catch (error) {
+      alertError();
       console.error("Error en la petición fetch", error);
     }
 
@@ -56,6 +128,27 @@ function ModalUserEditar({ closeModal }) {
       <form className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 p-6">
         <div className="mb-4">
           <label
+            htmlFor="matricula"
+            className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+          >
+            Seleccionar Matrícula
+          </label>
+          <select
+            id="matricula"
+            name="matricula"
+            onChange={handleChangeMatricula}
+            className="mt-1 p-2 border rounded-md w-full text-black focus:outline-none focus:ring focus:border-blue-300"
+          >
+            <option value="" defaultValue disabled>Seleccionar Matrícula</option>
+            {matriculas.map((matricula) => (
+              <option key={matricula} value={matricula}>
+                {matricula}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="mb-4">
+          <label
             htmlFor="nombre"
             className="block text-sm font-medium text-gray-700 dark:text-gray-300"
           >
@@ -66,7 +159,6 @@ function ModalUserEditar({ closeModal }) {
             id="nombre"
             name="nombre"
             value={formData.nombre}
-            placeholder="Nombre completo"
             onChange={handleChange}
             className="mt-1 p-2 border rounded-md w-full text-black focus:outline-none focus:ring focus:border-blue-300"
           />
@@ -81,26 +173,8 @@ function ModalUserEditar({ closeModal }) {
           <input
             type="email"
             id="correo"
-            placeholder="nombre@ejemplo.com"
             name="correo"
             value={formData.correo}
-            onChange={handleChange}
-            className="mt-1 p-2 border rounded-md w-full text-black focus:outline-none focus:ring focus:border-blue-300"
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            htmlFor="contraseña"
-            className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-          >
-            Contraseña
-          </label>
-          <input
-            type="password"
-            id="contraseña"
-            name="contraseña"
-            placeholder="********"
-            value={formData.contraseña}
             onChange={handleChange}
             className="mt-1 p-2 border rounded-md w-full text-black focus:outline-none focus:ring focus:border-blue-300"
           />
@@ -119,16 +193,18 @@ function ModalUserEditar({ closeModal }) {
             onChange={handleChange}
             className="mt-1 p-2 border rounded-md w-full text-black focus:outline-none focus:ring focus:border-blue-300"
           >
-            <option value="entrenador">Entrenador</option>
-            <option value="admin">Admin</option>
+            <option value="0">Entrenador</option>
+            <option value="1">Admin</option>
           </select>
         </div>
         <div className="col-span-1 sm:col-span-2 flex justify-center items-center mt-4">
           <button
             type="submit"
-            className="bg-blue-500 text-white py-2 px-2 sm:px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
+            onClick={handleSubmit}
+            className="bg-blue-500 text-white py-2 px-2
+            sm:px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
           >
-            Crear Usuario
+            Editar Usuario
           </button>
         </div>
       </form>
@@ -136,4 +212,4 @@ function ModalUserEditar({ closeModal }) {
   );
 }
 
-export { ModalUserEditar };
+export  {ModalUserEditar};
