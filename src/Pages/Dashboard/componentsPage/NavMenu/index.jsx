@@ -16,7 +16,7 @@ import {
 import {
   ModalCrearIntencion,
   ModalBorrarIntencion, 
-  ModalEditarIntencion
+  ModalEditarIntencion,
 } from "@/components/Modal/Modals/ModalIntenciones";
 
 

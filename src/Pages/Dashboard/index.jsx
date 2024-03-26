@@ -54,9 +54,6 @@ function Dasboard() {
         <div className="flex flex-col gap-4">
           <EstadisticasUsuarios />
           <div className="flex flex-row gap-4">
-            {/* Agrega el contenido adicional aquí */}
-          </div>
-          <div className="flex flex-row gap-4">
             <DataTable />
             <TrabajadorDes />
           </div>

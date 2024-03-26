@@ -7,15 +7,12 @@ import {
   getFilteredRowModel,
 } from "@tanstack/react-table";
 import {
-  FaSortAlphaDownAlt,
-  FaSortAlphaUp,
   FaArrowLeft,
   FaArrowRight,
 } from "react-icons/fa";
 import { MdFirstPage, MdLastPage } from "react-icons/md";
 import { useState } from "react";
 import data from "@/Datos/MOCK_DATA.json";
-import dayjs from "dayjs";
 
 function DataTable() {
   const columnas = [
@@ -25,11 +22,11 @@ function DataTable() {
     },
     {
       header: "Nombre",
-      accessorKey: "nombre", // Cambiado de 'name' a 'nombre'
+      accessorKey: "nombre", 
     },
     {
       header: "Correo",
-      accessorKey: "correo", // Cambiado de 'email' a 'correo'
+      accessorKey: "correo", 
       footer: "mi correo",
     },
     {
