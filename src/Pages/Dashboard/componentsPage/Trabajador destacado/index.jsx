@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-
+import { useAuth } from "@/contexts/AuthContext/useAuth";
 function TrabajadorDes() {
+  const { usuario } = useAuth();
   const [correo, setCorreo] = useState('');
   const [nombre, setNombre] = useState('');
   

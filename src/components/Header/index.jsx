@@ -9,10 +9,12 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import logo from "@/assets/images/logo&slogan.png";
+import { useAuth } from "@/contexts/AuthContext/useAuth";
 import { NavMenu } from "@/Pages/Dashboard/componentsPage/NavMenu";
 import { Switch } from "@/Pages/Dashboard/componentsPage/swichPageColor";
 
 const Header = () => {
+  const { usuario } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 

@@ -5,47 +5,15 @@ import { Footer } from '@/components/Footer';
 import {EstadisticasUsuarios} from './componentsPage/estadisticasUsuarios';
 import {DataTable} from './componentsPage/DataTable';
 import { TrabajadorDes } from "./componentsPage/Trabajador destacado";
+import { useAuth } from "@/contexts/AuthContext/useAuth";
+import { primeraMayuscula } from "@/lib/utils";
 
-function Dasboard() {
-  const location = useLocation();
-  const { token } = location.state || "";
-  const [usuarios, setUsuarios] = useState([]);
+function Dashboard() {
+  const { usuario } = useAuth();
 
-  useEffect(() => {
-    const obtenerUsuarios = async () => {
-      try {
-        if (!token || token === "") {
-          console.error("no existe el token");
-          return;
-        }
-
-        const response = await fetch("http://localhost/fastapi/usuarios", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        if (!response.ok) {
-          // Lanza un error si la respuesta no es exitosa
-          throw new Error(`Error en la petición: ${response.status}`);
-        }
-
-        // Parsea la respuesta a formato JSON
-        const jsonData = await response.json();
-        setUsuarios(jsonData);
-        console.log(jsonData);
-        // Actualiza el estado con los datos recibidos
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    obtenerUsuarios();
-  }, [token]);
-
+console.log(usuario)
   return (
+  
     <div className="flex flex-col min-h-screen">
       <Header />
       <div className="flex-grow p-4">
@@ -65,4 +33,4 @@ function Dasboard() {
   
 }
 
-export { Dasboard };
+export { Dashboard };

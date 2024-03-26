@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import image from '../../assets/images/LoginImage.png';
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext/useAuth";
 
 function Login() {
+  const { login } = useAuth();
   // Estado para almacenar la respuesta de la petición
   // Estados para el correo y contraseña del formulario
   const [email, setEmail] = useState("");
@@ -10,43 +13,57 @@ function Login() {
   // Función para la navegación entre páginas
   const navigate = useNavigate();
 
-  // Función que maneja el envío del formulario
+
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Evita que el formulario se envíe automáticamente
+    e.preventDefault();
 
     try {
-      // Realiza la petición POST al servidor para iniciar sesión
-      const response = await fetch('http://localhost/fastapi/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          //'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYXRyaWN1bGEiOjEyMzQ1Njc4LCJyb2wiOlsxXSwiZXhwIjoxNzA2MjU0Mjg3fQ.10JD10jwfoXPn3kNa4pX0x70HGTEtW1ywOiy5gW24YU'
-        },
-        body: JSON.stringify({
-          correo: email,
-          password: password,
-        }),
-      });
 
-      if (!response.ok) {
-        // Lanza un error si la respuesta no es exitosa
-        throw new Error(`Error en la petición: ${response.status}`);
-      }
-      
-      // Parsea la respuesta a formato JSON
-      const jsonData = await response.json();
-      // Actualiza el estado con los datos recibidos
-      
-
-      // Navega a la página principal
-      navigate('/', { state: { token: jsonData.token } });
-      // Muestra en consola el token de acceso (puedes personalizar este manejo según tus necesidades)
-      // console.log("Token de acceso:", jsonData.token);
+      await login(email, password);
+    
     } catch (error) {
-      // Captura cualquier error durante el proceso
-      console.error('Error al realizar la petición:', error.message);
+      console.error("Error al realizar la petición:", error.message);
     }
   };
+
+
+  // Función que maneja el envío del formulario
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault(); // Evita que el formulario se envíe automáticamente
+
+  //   try {
+  //     // Realiza la petición POST al servidor para iniciar sesión
+  //     const response = await fetch('http://localhost/fastapi/login', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         //'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYXRyaWN1bGEiOjEyMzQ1Njc4LCJyb2wiOlsxXSwiZXhwIjoxNzA2MjU0Mjg3fQ.10JD10jwfoXPn3kNa4pX0x70HGTEtW1ywOiy5gW24YU'
+  //       },
+  //       body: JSON.stringify({
+  //         correo: email,
+  //         password: password,
+  //       }),
+  //     });
+
+  //     if (!response.ok) {
+  //       // Lanza un error si la respuesta no es exitosa
+  //       throw new Error(`Error en la petición: ${response.status}`);
+  //     }
+      
+  //     // Parsea la respuesta a formato JSON
+  //     const jsonData = await response.json();
+  //     // Actualiza el estado con los datos recibidos
+      
+
+  //     // Navega a la página principal
+  //     navigate('/', { state: { token: jsonData.token } });
+  //     // Muestra en consola el token de acceso (puedes personalizar este manejo según tus necesidades)
+  //     // console.log("Token de acceso:", jsonData.token);
+  //   } catch (error) {
+  //     // Captura cualquier error durante el proceso
+  //     console.error('Error al realizar la petición:', error.message);
+  //   }
+  // };
 
   return (
     <div

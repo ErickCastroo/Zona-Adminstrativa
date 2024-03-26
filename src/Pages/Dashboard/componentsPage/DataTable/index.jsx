@@ -13,8 +13,10 @@ import {
 import { MdFirstPage, MdLastPage } from "react-icons/md";
 import { useState } from "react";
 import data from "@/Datos/MOCK_DATA.json";
+import { useAuth } from "@/contexts/AuthContext/useAuth";
 
 function DataTable() {
+  const { usuario } = useAuth();
   const columnas = [
     {
       header: "Matricula",

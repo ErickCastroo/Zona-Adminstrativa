@@ -3,9 +3,11 @@ import { FaRobot } from "react-icons/fa";
 import { RiAdminLine } from "react-icons/ri";
 import { GrUserAdmin } from "react-icons/gr";
 
-
+import { useAuth } from "@/contexts/AuthContext/useAuth";
 
 function EstadisticasUsuarios() {
+
+  const { usuario } = useAuth();
 
 const [Admins, setAdmins] = useState('')
 const [entrenadores, setEntrenadores] = useState('')

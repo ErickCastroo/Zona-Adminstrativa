@@ -1,6 +1,8 @@
 import React from "react";
+import { useAuth } from "@/contexts/AuthContext/useAuth";
 
 function Footer() {
+  const { usuario } = useAuth();
   return (
     <>
       <footer className="bg-slate-900 text-white py-4 mt-auto">
