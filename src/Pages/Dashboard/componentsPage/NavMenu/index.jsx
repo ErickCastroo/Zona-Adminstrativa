@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
-import { useAuth } from '@/contexts/AuthContext/useAuth'
-import { IoLogOut } from 'react-icons/io5'
+
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -244,10 +243,7 @@ function NavMenu() {
     setModalContent(content);
     setModalVisible(true);
   };
-  const auth = useAuth()
-  const handleLogout = () => {
-    auth.logout();
-  };
+  
 
   return (
     <div>
@@ -301,13 +297,6 @@ function NavMenu() {
           ))}
         </NavigationMenuList>
       </NavigationMenu>
-      <button
-        onClick={handleLogout}
-        className="text-white"
-      >
-        <IoLogOut />
-        <span className="ml-2">Logout</span>
-      </button>
     </div>
   );
 }

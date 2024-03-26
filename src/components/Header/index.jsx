@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { IoLogOut } from "react-icons/io5";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Dialog,
@@ -33,10 +34,15 @@ const Header = () => {
     // Puedes enviar los datos al servidor o realizar otras acciones según tus necesidades.
   };
 
+  const auth = useAuth()
+  const handleLogout = () => {
+    auth.logout();
+  };
+
   return (
     <div className="flex justify-between items-center p-3 bg-slate-800    dark:bg-slate-900  dark: text-slate-900">
       {/* Logo a la izquierda */}
-      
+
       <div className="w-1/12">
         {/* <img src='logo' alt="Logo" className="w-full h-auto" /> */}
         <Switch />
@@ -84,12 +90,18 @@ const Header = () => {
                 className="border  dark:text-slate-200 dark:bg-slate-800  dark:placeholder-slate-900 border-gray-400 p-2 rounded-md flex-grow"
               />
             </div>
-            <button
-              type="submit"
-              className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 w-48 self-end"
-            >
-              Guardar
-            </button>
+            <div className="flex row-auto justify-between p-3">
+              <button onClick={handleLogout} className=" bg-blue-500 text-white p-2 rounded-md hover:bg-red-600 w-48 self-start ">
+                Logout 
+              </button>
+  
+              <button
+                type="submit"
+                className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 w-48 self-end"
+              >
+                Guardar
+              </button>
+            </div>
           </form>
         </DialogContent>
       </Dialog>
