@@ -1,9 +1,14 @@
 // Importa React y el componente Modal desde el archivo "../../index"
 import React, { useState } from "react";
+import { back_url } from "@/config/const";
+import { useAuth } from "@/contexts/AuthContext/useAuth";
 import Modal from "../../index";
+import Swal from "sweetalert2";
 
 // Componente funcional ModalCrearIntencion
 function ModalCrearIntencion({ closeModal }) {
+  const { usuario } = useAuth();
+
   // Estado local para controlar la visibilidad del modal
   const [active, setActive] = useState(true);
 
@@ -38,6 +43,25 @@ function ModalCrearIntencion({ closeModal }) {
     closeModal();
   };
 
+  const alert = () => {
+    Swal.fire ({
+      title: "Intención creada",
+      text: "La intención ha sido creada exitosamente",
+      icon: "success",
+      confirmButtonText: "Aceptar",
+    
+    })
+  }
+  const alertError = () => {
+    Swal.fire ({
+      title: "Error",
+      text: "La intención no ha sido creada",
+      icon: "error",
+      confirmButtonText: "Aceptar",
+    
+    })
+  }
+
   // Función para manejar el envío del formulario
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,23 +74,27 @@ function ModalCrearIntencion({ closeModal }) {
 
     try {
       // Realiza una solicitud fetch para enviar los datos al servidor
-      const response = await fetch("URL_DE_TU_API_PARA_CREAR_INTENCION", {
+      const response = await fetch(`${back_url}/intents`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${usuario.token}`,
         },
         body: JSON.stringify(updatedIntentData),
       });
 
       // Verifica si la respuesta del servidor es exitosa
       if (response.ok) {
+        alert();
         console.log("Intención creada exitosamente");
         // Realizar acciones adicionales si es necesario
       } else {
+        alertError();
         console.error("Error al crear intención");
         // Mostrar un mensaje de error al usuario
       }
     } catch (error) {
+
       console.error(
         "Error en la petición fetch para la creación de intención",
         error
