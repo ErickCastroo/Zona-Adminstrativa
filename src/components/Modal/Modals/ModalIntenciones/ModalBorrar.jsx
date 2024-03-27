@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { back_url } from "@/config/const";
+import { useAuth } from "@/contexts/AuthContext/useAuth";
 import Modal from "../../index";
+import Swal from "sweetalert2";
 
 function ModalBorrarIntencion({ closeModal }) {
+  const {usuario} = useAuth();
+
   const [active, setActive] = useState(true);
   const [intentData, setIntentData] = useState({
     intenciones: [],
@@ -16,7 +21,7 @@ function ModalBorrarIntencion({ closeModal }) {
   const obtenerIntenciones = async () => {
     try {
       // Realizar una petición GET para obtener todas las intenciones
-      const response = await fetch("URL_DE_TU_API/intents");
+      const response = await fetch(`${back_url}/intents`);
       if (response.ok) {
         // Si la petición es exitosa, parsear la respuesta a JSON
         const data = await response.json();
