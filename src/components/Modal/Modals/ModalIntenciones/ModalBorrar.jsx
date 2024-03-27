@@ -12,6 +12,32 @@ function ModalBorrarIntencion({ closeModal }) {
     intenciones: [],
     intencionSeleccionada: "",
   });
+  const alertNoObtenerIntenciones = () => {
+    Swal.fire({
+      title: "Error",
+      text: "No hay intenciones disponibles para borrar",
+      icon: "error",
+      confirmButtonText: "Aceptar",
+    });
+  };
+  const alertIntencionBorrada = () => {
+    Swal.fire({
+      title: "Intención eliminada",
+      text: "La intención ha sido eliminada exitosamente",
+      icon: "success",
+      confirmButtonText: "Aceptar",
+    });
+  };
+  const alertErrorBorrarIntencion = () => {
+    Swal.fire({
+      title: "Error",
+      text: "No se pudo borrar la intención",
+      icon: "error",
+      confirmButtonText: "Aceptar",
+    });
+  };
+
+
 
   useEffect(() => {
     // Obtener todas las intenciones al montar el componente
@@ -21,7 +47,11 @@ function ModalBorrarIntencion({ closeModal }) {
   const obtenerIntenciones = async () => {
     try {
       // Realizar una petición GET para obtener todas las intenciones
-      const response = await fetch(`${back_url}/intents`);
+      const response = await fetch(`${back_url}/intents`,{
+        headers: {
+          Authorization: `Bearer ${usuario.token}`,
+        },
+      });
       if (response.ok) {
         // Si la petición es exitosa, parsear la respuesta a JSON
         const data = await response.json();
@@ -31,6 +61,7 @@ function ModalBorrarIntencion({ closeModal }) {
           intenciones: data,
         });
       } else {
+        alertNoObtenerIntenciones();
         console.error("Error al obtener las intenciones");
       }
     } catch (error) {
@@ -49,15 +80,20 @@ function ModalBorrarIntencion({ closeModal }) {
   const borrarIntencion = async () => {
     try {
       // Realizar una petición DELETE para borrar la intención seleccionada
-      const response = await fetch(`URL_DE_TU_API/intents/${intentData.intencionSeleccionada}`, {
+      const response = await fetch(`${back_url}/intents/${intentData.intencionSeleccionada}`, {
         method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${usuario.token}`,
+        },
       });
       if (response.ok) {
+        alertIntencionBorrada();
         console.log("Intención eliminada exitosamente");
         // Realizar acciones adicionales si es necesario
         // Por ejemplo, puedes volver a obtener las intenciones actualizadas
         obtenerIntenciones();
       } else {
+        alertErrorBorrarIntencion();
         console.error("Error al borrar la intención");
         // Mostrar un mensaje de error al usuario
       }
