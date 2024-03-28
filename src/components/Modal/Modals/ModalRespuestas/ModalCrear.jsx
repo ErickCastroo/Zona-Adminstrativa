@@ -3,6 +3,7 @@ import { back_url } from "@/config/const";
 import { useAuth } from "@/contexts/AuthContext/useAuth";
 import Modal from "../../index";
 import Swal from "sweetalert2";
+import { t } from "i18next";
 
 function ModalResCrear({ closeModal }) {
   const { usuario } = useAuth();
@@ -72,11 +73,16 @@ function ModalResCrear({ closeModal }) {
     }
   };
 
+  const toggle = () => {
+    setActive(!active);
+    closeModal();
+  }
+
   return (
     <Modal
       title="Crear respuesta"
       active={active}
-      closeModal={closeModal}
+      toggle={toggle}
       actionButton={crearRespuesta}
     >
       <div className="form-group">
