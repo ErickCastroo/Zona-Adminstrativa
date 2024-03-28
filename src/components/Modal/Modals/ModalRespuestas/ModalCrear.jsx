@@ -3,7 +3,6 @@ import { back_url } from "@/config/const";
 import { useAuth } from "@/contexts/AuthContext/useAuth";
 import Modal from "../../index";
 import Swal from "sweetalert2";
-import { t } from "i18next";
 
 function ModalResCrear({ closeModal }) {
   const { usuario } = useAuth();
