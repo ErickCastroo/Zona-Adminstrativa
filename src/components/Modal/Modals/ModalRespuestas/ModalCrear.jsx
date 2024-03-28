@@ -30,7 +30,10 @@ function ModalResCrear({ closeModal }) {
         console.error("Error al obtener las intenciones");
       }
     } catch (error) {
-      console.error("Error en la petición fetch para obtener intenciones", error);
+      console.error(
+        "Error en la petición fetch para obtener intenciones",
+        error
+      );
     }
   };
 
@@ -75,7 +78,7 @@ function ModalResCrear({ closeModal }) {
   const toggle = () => {
     setActive(!active);
     closeModal();
-  }
+  };
 
   return (
     <Modal
@@ -85,7 +88,10 @@ function ModalResCrear({ closeModal }) {
       actionButton={crearRespuesta}
     >
       <div className="form-group">
-        <label htmlFor="idIntencion" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+        <label
+          htmlFor="idIntencion"
+          className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+        >
           Seleccionar Intención
         </label>
         <select
@@ -103,7 +109,10 @@ function ModalResCrear({ closeModal }) {
         </select>
       </div>
       <div className="form-group">
-        <label htmlFor="respuesta" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+        <label
+          htmlFor="respuesta"
+          className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+        >
           Respuesta
         </label>
         <input
