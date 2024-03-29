@@ -124,8 +124,15 @@ function ModalResEditar({ closeModal }) {
           Editar Respuestas
         </h1>
       </div>
-      <form className="grid grid-cols-1 gap-4 p-6 md:grid-cols-2">
+
+      <form className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 p-6">
         <div className="mb-4">
+          <label
+            htmlFor="matricula"
+            className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+          >
+            Seleccionar Respuesta
+          </label>
       <select
         className="mt-1 p-2 border rounded-md w-full text-black focus:outline-none focus:ring focus:border-blue-300"
         value={idRespuestaSeleccionada}
@@ -138,6 +145,8 @@ function ModalResEditar({ closeModal }) {
           </option>
         ))}
       </select>
+    </div>
+    <div className="mb-4">
       <label
         className="block text-sm font-medium text-gray-700 dark:text-gray-300"
         htmlFor="nuevoContenidoRespuesta"
@@ -151,6 +160,8 @@ function ModalResEditar({ closeModal }) {
         value={nuevoContenidoRespuesta}
         onChange={(e) => setNuevoContenidoRespuesta(e.target.value)}
       />
+    </div>
+    <div className="mb-4">
       <label
         className="block text-sm font-medium text-gray-700 dark:text-gray-300"
         htmlFor="idNuevaIntencion"
@@ -169,15 +180,19 @@ function ModalResEditar({ closeModal }) {
           </option>
         ))}
       </select>
-      <div className="flex justify-center items-center mt-4">
+    </div>
+      
+      <div className="col-span-1 sm:col-span-2 flex justify-center items-center mt-4">
         <button
-          className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
-          onClick={editarRespuesta}
+          className="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none focus:ring focus:border-green-300"
+          onClick={(e) => {
+            e.preventDefault(); // Evita el comportamiento predeterminado del formulario
+            editarRespuesta(); // Llama a la función para editar la respuesta
+          }}
         >
-          Editar Respuesta
+          Actualizar Respuesta
         </button>
       </div>
-    </div>
   </form>
   
     </Modal>
