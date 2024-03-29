@@ -88,6 +88,11 @@ function ModalResCrear({ closeModal }) {
       actionButton={crearRespuesta}
     >
       <div className="form-group">
+      <div className="flex flex-col justify-center items-center">
+        <h1 className="text-3xl font-bold text-black dark:text-white">
+          Crear Nueva Respuesta
+        </h1>
+      </div>
         <label
           htmlFor="idIntencion"
           className="block text-sm font-medium text-gray-700 dark:text-gray-300"

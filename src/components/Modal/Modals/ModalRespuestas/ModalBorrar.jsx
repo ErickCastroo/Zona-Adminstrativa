@@ -79,6 +79,11 @@ function ModalResBorrar({ closeModal }) {
 
   return (
     <Modal title="Borrar Respuesta" active={active} toggle={toggle}>
+      <div className="flex flex-col justify-center items-center">
+        <h1 className="text-3xl font-bold text-black dark:text-white">
+          Borrar Respuestas
+        </h1>
+      </div>
       <div className="form-group">
         <label
           htmlFor="respuestaSeleccionada"
@@ -102,7 +107,7 @@ function ModalResBorrar({ closeModal }) {
       </div>
       <div className="flex justify-center items-center mt-4">
         <button
-          className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
+          className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:border-red-300"
           onClick={borrarRespuesta}
         >
           Borrar Respuesta

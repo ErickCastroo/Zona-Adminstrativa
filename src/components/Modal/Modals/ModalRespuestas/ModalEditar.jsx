@@ -119,9 +119,13 @@ function ModalResEditar({ closeModal }) {
 
   return (
     <Modal active={active} toggle={toggle}>
-      <h1 className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-        Editar Respuesta
-      </h1>
+      <div className="flex flex-col justify-center items-center">
+        <h1 className="text-3xl font-bold text-black dark:text-white">
+          Editar Respuestas
+        </h1>
+      </div>
+      <form className="grid grid-cols-1 gap-4 p-6 md:grid-cols-2">
+        <div className="mb-4">
       <select
         className="mt-1 p-2 border rounded-md w-full text-black focus:outline-none focus:ring focus:border-blue-300"
         value={idRespuestaSeleccionada}
@@ -173,6 +177,9 @@ function ModalResEditar({ closeModal }) {
           Editar Respuesta
         </button>
       </div>
+    </div>
+  </form>
+  
     </Modal>
   );
 }

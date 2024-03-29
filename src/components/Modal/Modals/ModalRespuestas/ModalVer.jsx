@@ -11,7 +11,11 @@ function ModalResVer({ closeModal }) {
 
   return (
     <Modal active={active} toggle={toggle}>
-      <h1>Ver Respuesta</h1>
+      <div className="flex flex-col justify-center items-center">
+        <h1 className="text-3xl font-bold text-black dark:text-white">
+          Borrar Respuestas
+        </h1>
+      </div>
     </Modal>
   );
 }

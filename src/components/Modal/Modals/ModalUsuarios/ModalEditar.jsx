@@ -204,7 +204,7 @@ function ModalUserEditar({ closeModal }) {
             className="bg-blue-500 text-white py-2 px-2
             sm:px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
           >
-            Editar Usuario
+            Actualizar Usuario
           </button>
         </div>
       </form>
