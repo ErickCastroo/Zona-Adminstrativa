@@ -147,6 +147,7 @@ function ModalUserEditar({ closeModal }) {
             ))}
           </select>
         </div>
+        
         <div className="mb-4">
           <label
             htmlFor="nombre"
@@ -201,8 +202,7 @@ function ModalUserEditar({ closeModal }) {
           <button
             type="submit"
             onClick={handleSubmit}
-            className="bg-blue-500 text-white py-2 px-2
-            sm:px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
+            className="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none focus:ring focus:border-green-300"
           >
             Actualizar Usuario
           </button>

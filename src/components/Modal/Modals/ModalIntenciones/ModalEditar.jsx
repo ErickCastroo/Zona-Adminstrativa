@@ -171,8 +171,7 @@ function ModalEditarIntencion({ closeModal }) {
           <button
             type="button"
             onClick={actualizarIntencion}
-            className="bg-blue-500 text-white py-2 px-4 rounded-md
-            hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
+            className="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none focus:ring focus:border-green-300"
             >
             Actualizar Intención
           </button>
