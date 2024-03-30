@@ -111,7 +111,7 @@ function ModalBorrarPasos({ closeModal }) {
           <option value="">Selecciona una respuesta</option>
           {pasos.map((paso) => (
             <option key={paso.id} value={paso.id}>
-              {paso.id} = Intencion : {paso.id_intent} - Historia: {paso.id_story}
+              {paso.id}.- Intencion : {paso.id_intent} | Historia: {paso.id_story}
             </option>
           ))}
         </select>
@@ -121,7 +121,7 @@ function ModalBorrarPasos({ closeModal }) {
           className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:border-red-300"
           onClick={borrarPaso}
         >
-          Borrar Respuesta
+          Borrar paso
         </button>
       </div>
     </Modal>
